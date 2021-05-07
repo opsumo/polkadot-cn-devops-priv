@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: polkadot-wss
+spec:
+  to:
+    kind: Service
+    name: polkadot-wss
+  port:
+    targetPort: wss

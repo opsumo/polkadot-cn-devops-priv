@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: polkadotjs
+spec:
+  selector:
+    app: polkadotjs
+  ports:
+    - name: web
+      protocol: TCP
+      port: 8000
+      targetPort: web

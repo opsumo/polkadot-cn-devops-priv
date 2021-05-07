@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: polkadot
+spec:
+  selector:
+    matchLabels:
+      app: polkadot
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: polkadot
+    spec:
+      containers:
+      - name: polkadot
+        image: parity/polkadot:latest
+        command: ["--name", "polkadot-test"]
+        ports:
+        - containerPort: 9944
+        - containerPort: 9933
+        - containerPort: 30333
+        volumeMounts:
+        - name: polkadot
+        mountPath: /polkadot
+    volumes:
+      name: polkadot
+      persistentVolumeClaim:
+        claimName: polkadot-pvc
+      spec:
+      accessModes: [ "ReadWriteOnce" ]
+      volumeMode: Filesystem
+      resources:
+        requests:
+          storage: 1Gi

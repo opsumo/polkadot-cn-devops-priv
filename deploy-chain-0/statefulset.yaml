@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dot-opsumo
+  labels:
+    app: dot-opsumo
+spec:
+  ports:
+  - port: 9944
+    name: dot-opsumo-web-port
+  clusterIP: None
+  selector:
+    app: dot-opsumo
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: dot-opsumo
+spec:
+  selector:
+    matchLabels:
+      app: dot-opsumo # Label selector that determines which Pods belong to the StatefulSet
+                 # Must match spec: template: metadata: labels
+  serviceName: "dot-opsumo"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dot-opsumo # Pod template's label selector
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: dot-opsumo
+        image: parity/polkadot:latest
+        command: ["--name", "PolkaK8","--chain","westend","--ws-external","--rpc-external", "--rpc-cors", "all"]
+        ports:
+        - containerPort: 9944
+          name: dot-opsumo-web-port
+        - port: 9933
+          name: dot-opsumo-rpc-port
+        - port: 30333
+          name: dot-opsumo-p2p-port    
+        volumes:
+        - name: dot-opsumo-pvc
+          mountPath: /polkadot
+  volumeClaimTemplates:
+  - metadata:
+      name: dot-opsumo-pvc
+    spec:
+      accessModes: [ "ReadWriteMany" ]
+      volumeMode: Filesystem
+      resources:
+        requests:
+          storage: 2Gi

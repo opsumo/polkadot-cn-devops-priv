@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: polkadotjs
+spec:
+  to:
+    kind: Service
+    name: polkadotjs
+  port:
+    targetPort: web
