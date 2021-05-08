@@ -17,7 +17,7 @@ spec:
         image: edmcbee/polkadotjs:latest
         env:
         - name: WS_URL
-          value: "ws://polkadot-wss-polkadot.apps-crc.testing"
+          value: "ws://polkadot-wss.polkadot.svc:9944"
         ports:
         - containerPort: 8000
           name: web  
