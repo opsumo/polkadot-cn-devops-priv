@@ -15,7 +15,7 @@ spec:
       containers:
       - name: polkadot
         image: parity/polkadot:latest
-        args: ["--name", "polkadot-test","--chain","westend","--ws-external","--rpc-external", "--rpc-cors", "all"]
+        args: ["--name", "corpus-test","--chain","westend","--ws-external","--rpc-external", "--rpc-cors", "all"]
         ports:
         - containerPort: 9944
           name: wss
