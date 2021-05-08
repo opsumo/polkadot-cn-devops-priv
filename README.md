@@ -13,10 +13,10 @@
 
   The following other important Phases are also soft-targeted for implemenntation:
 
-  1. Phase 1: Deploy2K8 Test Polkadot Relay Chain + (Validators x n + Parachain + Collators x m) x l + CICD
-  2. Phase 2: Deploy2K8 Test (Custom Chain x n) + UI + CICD
-  3. Phase 3: Deploy2K8 Secure Validators + CICD, Deploy2K8 Secure Collators  + CICD, Deploy2K8 Secure Parachain + CICD, Deploy2K8 Secure Fisherman + CICD
-  4. Phase 4: Deploy2K8 Generic Test (Custom Chain(with own tokenomics) x n) + UI + CICD
-  5. Phase 5: Deploy2K8 Smart Contract Chain  + CICD  
+  1. [Phase 1](./deploy-chain-1/README.md): Deploy2K8 Test Polkadot Relay Chain + (Validators x n + Parachain + Collators x m) x l + CICD
+  2. [Phase 2](./deploy-chain-2/README.md): Deploy2K8 Test (Custom Chain x n) + UI + CICD
+  3. [Phase 3](./deploy-chain-3/README.md): Deploy2K8 Secure Validators + CICD, Deploy2K8 Secure Collators  + CICD, Deploy2K8 Secure Parachain + CICD, Deploy2K8 Secure Fisherman + CICD
+  4. [Phase 4](./deploy-chain-4/README.md): Deploy2K8 Generic Test (Custom Chain(with own tokenomics) x n) + UI + CICD
+  5. [Phase 5](./deploy-chain-5/README.md): Deploy2K8 Smart Contract Chain  + CICD  
 
   A couple or several of the Phases enumerated above can be implemented in parallel. E.g., P1 and P2 can be targetted for implementation during the Buildathon from April 29 to May 30. While the other phases could be implemented at other timelines, ParityTech and W3 permitting.
