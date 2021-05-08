@@ -21,16 +21,12 @@ spec:
           name: wss
         - containerPort: 9933
         - containerPort: 30333
-        volumes:
-        - name: polkadot
-        mountPath: /polkadot
-    volumeMounts:
-      name: polkadot
-      persistentVolumeClaim:
-        claimName: polkadot-pvc
-      spec:
-      accessModes: [ "ReadWriteOnce" ]
-      volumeMode: Filesystem
-      resources:
-        requests:
-          storage: 1Gi        
+        volumeMounts:
+        - mountPath: /polkadot
+          name: polkadot
+      volumes:
+      - name: polkadot
+        persistentVolumeClaim:
+          claimName: polkadot-pvc
+
+
