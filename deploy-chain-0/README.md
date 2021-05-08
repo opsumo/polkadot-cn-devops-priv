@@ -67,7 +67,7 @@ spec:
 
 ```bash
 oc adm policy add-scc-to-group anyuid system:authenticated
-oc apply -f deployment.yaml
+oc apply -f blockchain/deployment.yaml
 oc get pods
 oc logs deploy/polkadot 
 ```
@@ -90,7 +90,7 @@ spec:
 ```
     Implement by calling,
 ```bash
-oc apply -f service.yaml
+oc apply -f blockchain/service.yaml
 ```
 
   4. Finally, provide a route, so that the service can be given with a name, similar to setting-up the DNS entry for the service.
@@ -106,6 +106,6 @@ spec:
   port:
     targetPort: wss
 ```
-    Then implement by calling, ` oc apply -f route.yaml ` 
+    Then implement this by calling, ` oc apply -f blockchain/route.yaml ` 
 
-  5.   
+  5.    
