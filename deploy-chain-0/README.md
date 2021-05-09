@@ -2,7 +2,7 @@
 
 This is our initial attempt to deploy a Polkadot Blockchain to a local Kubernetes Cluster in a Pod.
 
-The intent here is to showcase that a Polkadot Image, in this case, the container found in the public [Dockerhub registry](hub.docker.com) as pointed to from the official ParityTech [Polkadot github repository](https://github.com/paritytech/polkadot) can be deployed to a Kubernetes platform using a stateless Deployment manifest. In addition, deploy a corresponding UI such as the Polkadot-JS in a container.
+The intent here is to showcase that a Polkadot Image, in this case, the container found in the public [Dockerhub registry](hub.docker.com) as pointed to from the official Parity Tech [Polkadot github repository](https://github.com/paritytech/polkadot) can be deployed to a Kubernetes platform using a stateless Deployment manifest. In addition, deploy a corresponding UI such as the Polkadot-JS in a container.
 
   ## Requirements
   1. A Linux Deployment Machine. 
@@ -22,7 +22,7 @@ The intent here is to showcase that a Polkadot Image, in this case, the containe
           <img align="center" width="300" height="350" src="./images/rhos-crc-topology.png">  
 
   ## Steps
-  1. Develop the Deployment Manifest for the Polkadot image. The manifest specs, saved as deployment.yaml. Notice that our image is pre-baked Polkadot image by Parity-Tech. As of this writing, the latest image is paritytech/ci-linux:9a44d4ec-20210423.
+  1. Develop the Deployment Manifest for the Polkadot image. The manifest specs, saved as deployment.yaml. Notice that our image is pre-baked Polkadot image by Parity Tech. As of this writing, the latest image is paritytech/ci-linux:9a44d4ec-20210423.
 
 ```yaml  
 apiVersion: apps/v1

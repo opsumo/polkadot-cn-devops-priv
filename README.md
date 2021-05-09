@@ -25,18 +25,21 @@
   Docker is the status quo, and it works! Why introduce Kubernetes, even more so, Redhat Openshift?! For so many reasons we don't have to repeat saying, like the explanations from the following articles:
 
   1. [K8 vs Docker primer](https://containerjournal.com/topics/container-ecosystems/kubernetes-vs-docker-a-primer/)
-  2. [](https://www.sumologic.com/blog/kubernetes-vs-docker/)
-  3. [](https://newrelic.com/blog/best-practices/docker-vs-kubernetes)
-  4. [](https://www.ibm.com/cloud/blog/kubernetes-vs-docker)
-  5. [](https://azure.microsoft.com/en-us/topic/kubernetes-vs-docker/)
+  2. [K8 vs Docker by SumoLogic](https://www.sumologic.com/blog/kubernetes-vs-docker/)
+  3. [K8 vs Docker by NewRelic](https://newrelic.com/blog/best-practices/docker-vs-kubernetes)
+  4. [K8 vs Docker by IBM](https://www.ibm.com/cloud/blog/kubernetes-vs-docker)
+  5. [K8 vs Docker by Microsoft](https://azure.microsoft.com/en-us/topic/kubernetes-vs-docker/)
 
   However, few of the most compelling DevOps arguments namely networking, security, automated scheduling, scaling and high-availability in production environments are the key features that Docker can never achieve on its own, not even with Docker Swarm -- until Docker, Inc themselves have raised the white flag, and recognized the supremacy that Kubernetes can provide so they have to adapt. Try running docker images each time in a cluster and configure all these each time like snowflakes, it easily crumbles and is quite a painful and stressful process. Multiply these challenges when you try to deploy hundreds to thousands of these in multiple clouds. 
   
   Remember, DevOps aims to address the "joy" of being in the role, and only Kubernetes has so far have nearly been able to achieve this aim. Although, we also acknowledge the fact that it is really hard to learn it at first. 
 
-  Why Openshift? Well, like Linux, Kubernetes is likened to a kernel, it needs to a distribution with a secific set of tools, and by far, Redhat's Kebernetes tooling is the most superior among the many that are out there. Take the case of CRC which allows to quickly use Kubernetes in Openshift flavor using just our laptops. But here are further compelling expaliners:
+  Why Openshift? Well, like Linux, Kubernetes is likened to a kernel, it needs a distribution with a secific set of tools, and by far, Redhat's Kubernetes tooling is the most superior among the many that are out there. Take the case of CRC (Code Reader Containers), a desktop app that allows us to quickly use Openshift flavored Kubernetes in our laptops. Furthermore compelling are the following explainers:
 
-  1. [](https://www.simplilearn.com/kubernetes-vs-openshift-article)
-  2. [](https://www.redhat.com/en/topics/containers/red-hat-openshift-kubernetes)
-  3. [](https://www.dataversity.net/openshift-vs-kubernetes-the-seven-most-critical-differences/)
-  4. [](https://www.bmc.com/blogs/kubernetes-vs-openshift/)
+  1. [Kubernetes-vs-openshift-article](https://www.simplilearn.com/kubernetes-vs-openshift-article)
+
+  2. [Redhat Openshift](https://www.redhat.com/en/topics/containers/red-hat-openshift-kubernetes)
+
+  3. [7 most critical differences between Openshift and Kubernetes](https://www.dataversity.net/openshift-vs-kubernetes-the-seven-most-critical-differences/)
+
+  4. [BMC pov on  Kubernetes and Openshift](https://www.bmc.com/blogs/kubernetes-vs-openshift/)
