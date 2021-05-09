@@ -1,4 +1,4 @@
-# polkadot-cn-devops-priv
+# polkadot-cn-devops
 
 ## Objective 
   In a Polkadot hackaton dubbed as Buildathon: India, my [Opsumo](www.opsumo.co) team aims to take part in the category of "Blockchain Using Substrate,Open Hack ( Dev Tooling / Block Explorer / Block Visualiser etc.)" 
