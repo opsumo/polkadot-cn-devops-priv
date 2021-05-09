@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: polkadot-wss
+spec:
+  selector:
+    app: polkadot
+  ports:
+    - name: wss
+      protocol: TCP
+      port: 9944
+      targetPort: wss

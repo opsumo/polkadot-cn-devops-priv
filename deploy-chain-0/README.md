@@ -4,7 +4,7 @@ This is our initial attempt to deploy a Polkadot Blockchain to a local Kubernete
 
 The intent here is to showcase that a Polkadot Image, in this case, the container found in the public [Dockerhub registry](hub.docker.com) as pointed to from the official ParityTech [Polkadot github repository](https://github.com/paritytech/polkadot) can be deployed to a Kubernetes platform using a stateless Deployment manifest. In addition, deploy a corresponding UI such as the Polkadot-JS in a container.
 
-  ### Requirements
+  ## Requirements
   1. A Linux Deployment Machine. 
     Machine Specifications: 
       * 4 Core, 16GB RAM, with large free storage space
@@ -12,7 +12,7 @@ The intent here is to showcase that a Polkadot Image, in this case, the containe
   2. A Kubernetes platform. Local or on-prem Datacenter or on-cloud VPC
     Machine Specifications: 
       * 4-8 Core, 16-64GbRAM, with large free storage space
-      * Minikube or CRC with Openshift 4.x or OKD 4.x or Openshift 4.x
+      * Minikube but preferably Code Ready Container with Openshift 4.x or OKD 4.x or Openshift 4.x
       * Able to login to a Kubernetes platform via Kubectl or oc CLI.
 
           <img align="center" width="500" height="600" src="./images/rhos-crc-login.png"> 
@@ -21,7 +21,7 @@ The intent here is to showcase that a Polkadot Image, in this case, the containe
 
           <img align="center" width="300" height="350" src="./images/rhos-crc-topology.png">  
 
-  ### Steps
+  ## Steps
   1. Develop the Deployment Manifest for the Polkadot image. The manifest specs, saved as deployment.yaml. Notice that our image is pre-baked Polkadot image by Parity-Tech. As of this writing, the latest image is paritytech/ci-linux:9a44d4ec-20210423.
 
 ```yaml  
@@ -54,19 +54,14 @@ spec:
     volumeMounts:
       name: polkadot
       persistentVolumeClaim:
-        claimName: polkadot-pvc
-      spec:
-      accessModes: [ "ReadWriteOnce" ]
-      volumeMode: Filesystem
-      resources:
-        requests:
-          storage: 1Gi        
+        claimName: polkadot-pvc 
 ```
   
-  2. Deploy the deployment manifest to kubernetes by calling the below oc or kubectl CLI commands. But prior, call the security-context-constraint system to bypass the RBAC mechanism of kubernetes and openshift. This is a one-time call, to go around the major security obstacle that many inexperienced openshift operator will experience. Once this is overcomed, all else will be as per openshift documentation, easy. Call the oc apply to execute the above deployment manifest. Get pods to verify the status is "Running". To see the logs, invoke oc logs for either the pod or the deployment. Specifying the pod however requires the entire pod signature, but to specify the deployment, simply know the deployment name, and call it like below. 
+  2. Deploy the deployment manifest to kubernetes by calling the below oc or kubectl CLI commands. But prior, call the security-context-constraint system to bypass the RBAC mechanism of kubernetes and openshift. This is a one-time call, to go around the major security obstacle that many inexperienced openshift operator will experience. Once this is overcomed, all else will be as per openshift documentation, easy. Call the oc apply to execute the above pvc and deployment manifest. Get pods to verify the status is "Running". To see the logs, invoke oc logs for either the pod or the deployment. Specifying the pod however requires the entire pod signature, but to specify the deployment, simply know the deployment name, and call it like below. 
 
 ```bash
-oc adm policy add-scc-to-group anyuid system:authenticated
+#oc adm policy add-scc-to-group anyuid system:authenticated
+oc apply -f blockchain/pvc.yaml
 oc apply -f blockchain/deployment.yaml
 oc get pods
 oc logs deploy/polkadot 
@@ -108,7 +103,7 @@ spec:
 ```
     Then implement this by calling, ` oc apply -f blockchain/route.yaml ` 
 
-  5. In order to provide a frontend UI for our polkadot blockchain, we need to deploy an image of the [substrate-front-end-template](https://github.com/substrate-developer-hub/substrate-front-end-template). To accomplish this, we've cloned the above repo and added a [Dockerfile](../substrate-front-end-template). The below script
+  5. In order to provide a frontend UI for our polkadot blockchain, we need to deploy an image of the [substrate-front-end-template](https://github.com/substrate-developer-hub/substrate-front-end-template). To accomplish this, we've cloned the above repo and added a [Dockerfile](../substrate-front-end-template). The below simple script represents the innards of the Dockerfile for the UI Viewer is made to statically point to the deployed and running blockchain.
 
 ```js
 FROM node:alpine
