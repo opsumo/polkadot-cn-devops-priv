@@ -1,11 +1,11 @@
 # polkadot-cn-devops
 
 ## Objective 
-  In a Polkadot hackaton dubbed as Buildathon: India, my [Opsumo](www.opsumo.co) team aims to take part in the category of "Blockchain Using Substrate,Open Hack ( Dev Tooling / Block Explorer / Block Visualiser etc.)" 
+  In a [Polkadot](https://polkadot.network) hackaton dubbed as Buildathon: India, my [Opsumo](www.opsumo.co) team aims to take part in the category of "Blockchain Using Substrate, Open Hack ( Dev Tooling / Block Explorer / Block Visualiser etc.)" 
 
-  At its simplest but profoundly elegant demonstration of our DevOps skills, we resolved to provide a way to automatically spin-up test infrastructures for hosting Polkadot blockchains, components and networks into multiple clouds. In order to attain CNCF compliance we think that the best cloud-native platform that can host the target objectives in a uniformly written script is to leverage the most mature Kubernetes platform provider in the market, Redhat Openshift. As secondary objective, we also intend implement a demonstration of automated deployment pipelines that can effectively trigger Continuous Integration and Continuous Deployment (CICD) of a desired Blockchain configuration. CICD is the heart of DevOps, and fully realizing its benefits is the quintiessential ideals of DevOps. 
+  At its simplest but profoundly elegant, we intend to demonstration a [CNCF](cncf.io) compliant DevOps culture.  We have  resolved to provide a way to automatically spin-up test infrastructures for hosting Polkadot blockchains, components, networks and tools into hybrid/multiple clouds. In order to attain CNCF compliance we believe that the best cloud-native platform that can host the target objectives is to use [Kubernetes](https://kubernetes.io). We however further argue (highly opinionated in some quarters), that in order to achieve a uniformly written script, we have leverage the most mature Kubernetes platform provider in the market, Redhat Openshift. As secondary objective, we also intend to implement a demonstration of automated deployment pipelines that can effectively trigger Continuous Integration and Continuous Deployment (CICD) of a desired Blockchain configuration. And in addition, we also have to provide, on a per need or on-demand basis, a way to provision and deploy a corresponding set of monitoring tools. CICD is the heart of DevOps, and fully realizing its implementation and gain from its benefits is the quintiessential ideals of the culture. 
   
-  DevOps Tooling is what we aim to accomplish in this Buildathon: India 2021.
+  Autotmated DevOps Tooling is what we aim to accomplish in this Buildathon: India 2021.
 
   ### Implementing Phase 0: Deploy2K8 Test Relay Chain + UI + CICD
 
