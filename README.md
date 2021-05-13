@@ -33,9 +33,9 @@
 
   However, few of the most compelling DevOps arguments namely networking, security, automated scheduling, scaling and high-availability in production environments are the key features that Docker can never achieve on its own, not even with Docker Swarm -- until Docker, Inc themselves have raised the white flag, and recognized the supremacy that Kubernetes can provide so they have to adapt. Try running docker images each time in a cluster and configure all these each time like snowflakes, it easily crumbles and is quite a painful and stressful process. Multiply these challenges when you try to deploy hundreds to thousands of these in multiple clouds. 
   
-  Remember, DevOps aims to address the "joy" of being in the role, and only Kubernetes has so far have nearly been able to achieve this aim. Although, we also acknowledge the fact that it is really hard to learn it at first. 
+  Remember, the DevOps culture aims to address the "joy" of being in either of the role as Dev or Ops or vice versa, i.e. to function dually effectively and reliably. By far, only Kubernetes have nearly been able to achieve the DevOps ideals, i.e. of enabling a platform for automated integration and deployment, at scale, securely and as much of the many architectural ilities. Although, we also acknowledge the fact that it is really hard to learn it at first. 
 
-  Why Openshift? Well, like Linux, Kubernetes is likened to a kernel, it needs a distribution with a secific set of tools, and by far, Redhat's Kubernetes tooling is the most superior among the many that are out there. Take the case of CRC (Code Reader Containers), a desktop app that allows us to quickly use Openshift flavored Kubernetes in our laptops. Furthermore compelling are the following explainers:
+  Why Openshift? Well, like Linux, Kubernetes is likened to a kernel, it needs a distribution with a specific set of tools, and by far, Redhat's Kubernetes tooling is the most superior among the many that are out there. Take the case of CRC (Code Reader Containers), a desktop app that allows us to quickly use Openshift flavored Kubernetes in our laptops. Furthermore compelling are the following explainers:
 
   1. [Kubernetes-vs-openshift-article](https://www.simplilearn.com/kubernetes-vs-openshift-article)
 
