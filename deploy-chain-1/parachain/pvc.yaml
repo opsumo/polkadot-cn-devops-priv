@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: polkadot-pvc
+  name: polkadot-pc-pvc
 spec:
   accessModes:
   - ReadWriteOnce

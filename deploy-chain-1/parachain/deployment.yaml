@@ -1,32 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: polkadot
+  name: polkadot-pc
 spec:
   selector:
     matchLabels:
-      app: polkadot
+      app: polkadot-pc
   replicas: 1
   template:
     metadata:
       labels:
-        app: polkadot
+        app: polkadot-pc
     spec:
       containers:
       - name: polkadot
         image: parity/polkadot:latest
-        args: ["--name", "corpus-test","--chain","westend","--ws-external","--rpc-external", "--rpc-cors", "all"]
+        args: ["--name", "corpus-test","--chain","polkadot-rc","--ws-external","--rpc-external", "--rpc-cors", "all"]
         ports:
         - containerPort: 9944
           name: wss
         - containerPort: 9933
         - containerPort: 30333
         volumeMounts:
-        - mountPath: /polkadot
-          name: polkadot
+        - mountPath: /polkadot-pc
+          name: polkadot-pc
       volumes:
-      - name: polkadot
+      - name: polkadot-pc
         persistentVolumeClaim:
-          claimName: polkadot-pvc
+          claimName: polkadot-pc-pvc
 
 
