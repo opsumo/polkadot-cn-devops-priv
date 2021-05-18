@@ -14,8 +14,9 @@ spec:
     spec:
       containers:
       - name: polkadot-rc
-        image: parity/polkadot:latest
-        args: ["--name", "opsumo-test","--chain","polkadot-pc","--ws-external","--rpc-external", "--rpc-cors", "all"]
+        #image: parity/polkadot:latest
+        image: paritytech/ci-linux:9a44d4ec-20210423
+        args: ["--name", "opsumo-test-rc","--chain","opsumo-test-pc","--ws-external","--rpc-external", "--rpc-cors", "all"]
         ports:
         - containerPort: 9944
           name: wss
