@@ -1,25 +1,26 @@
 FROM debian:buster-slim
+#COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
+ENV PATH=/\
+    SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt\
+    SSL_CERT_DIR=/etc/ssl/certs\
+    GITHUB_SHA=$GITHUB_SHA\
+    RUST_BACKTRACE=full\
+    RUST_LOG="warn,subtrate=info"
 
-# show backtraces
-ENV RUST_BACKTRACE 1
+COPY ./target/release/node-template /opt/bin/* /
 
-# install tools and dependencies
-# add user and link ~/.local/share/substrate to /data
-RUN useradd -m -u 1001 -U -s /bin/sh -d /substrate substrate && \
-	mkdir -p /data /substrate/.local/share && \
-	chown -R substrate:substrate /data && \
-	ln -s /data /substrate/.local/share/substrate
-
-# add polkadot binary to docker image
-COPY ./target/release/node-template /usr/local/bin
+RUN useradd -m -u 1001 -U -s /bin/sh -d /substrate-node-template substrate && \
+	mkdir -p /substrate-node-template/.local/share && \
+	mkdir /data && \
+	chown -R substrate:0 /data && \
+	ln -s /data /substrate-node-template/.local/share/substrate && \
+  chgrp -R 0 /substrate-node-template/.local/share && \
+  chmod -R g=u /substrate-node-template/.local/share && \
+	rm -rf /usr/bin /usr/sbin
 
 USER substrate
-
-# check if executable works in this container
-RUN /usr/local/bin/node-template --version
-
 EXPOSE 30333 9933 9944
-VOLUME ["/substrate"]
+VOLUME ["/data"]
 
-ENTRYPOINT ["/usr/local/bin/node-template"]
+CMD ["/opt/bin/node-template", "--dev", "--ws-external"]
