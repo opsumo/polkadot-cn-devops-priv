@@ -12,6 +12,10 @@ fsGroup:
 supplementalGroups:
   type: RunAsAny
 users:
-- my-admin-user
+- kube-admin-user
 groups:
-- my-admin-group
+- kube-admin-group
+requiredDropCapabilities:
+- KILL
+- MKNOD
+- SYS_CHROOT

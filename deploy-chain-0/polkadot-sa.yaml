@@ -1,0 +1,14 @@
+apiVersion: v1
+imagePullSecrets:
+- name: polkadot-dockercfg-w6cc2
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2021-05-15T13:21:11Z"
+  name: polkadot
+  namespace: polkadot
+  resourceVersion: "711728"
+  selfLink: /api/v1/namespaces/polkadot/serviceaccounts/polkadot
+  uid: 2f9addbe-2b36-425e-8b15-fad6bbfc30a8
+secrets:
+- name: polkadot-token-lm8lz
+- name: polkadot-dockercfg-w6cc2

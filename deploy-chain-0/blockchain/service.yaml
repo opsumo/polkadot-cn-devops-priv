@@ -10,3 +10,7 @@ spec:
       protocol: TCP
       port: 9944
       targetPort: wss
+    - name: prometheus
+      protocol: TCP
+      port: 9615
+      targetPort: 9615  

@@ -1,33 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: polkadot-rc
+  name: polkadot
 spec:
   selector:
     matchLabels:
-      app: polkadot-rc
+      app: polkadot
   replicas: 1
   template:
     metadata:
       labels:
-        app: polkadot-rc
+        app: polkadot
     spec:
       containers:
-      - name: polkadot-rc
-        #image: parity/polkadot:latest
-        image: paritytech/ci-linux:9a44d4ec-20210423
-        args: ["--name", "opsumo-test-rc","--chain","opsumo-test-pc","--ws-external","--rpc-external", "--rpc-cors", "all"]
+      - name: polkadot
+        image: parity/polkadot:latest
+        args: ["--name", "polkadot","--chain","polkadot-local","--ws-external","--rpc-external", "--rpc-cors", "all"]
         ports:
         - containerPort: 9944
           name: wss
         - containerPort: 9933
+          name: rpc
         - containerPort: 30333
+          name: p2p
         volumeMounts:
-        - mountPath: /polkadot-rc
-          name: polkadot-rc
+        - mountPath: /polkadot
+          name: polkadot
       volumes:
-      - name: polkadot-rc
+      - name: polkadot
         persistentVolumeClaim:
-          claimName: polkadot-rc-pvc
+          claimName: polkadot-pvc
+      securityContext:
+        runAsUser: 1000
+      serviceAccountName: polkadot      
 
 

@@ -22,7 +22,8 @@ The intent here is to showcase that a Polkadot Image, in this case, the containe
           <img align="center" width="300" height="350" src="./images/rhos-crc-topology.png">  
 
   ## Steps
-  1. Develop the Deployment Manifest for the Polkadot image. The manifest specs, saved as deployment.yaml. Notice that our image is pre-baked Polkadot image by Parity Tech. As of this writing, the latest image is paritytech/ci-linux:9a44d4ec-20210423.
+  0. Prior to anything, in less than a minute, try running ``` docker run --rm -it parity/polkadot:latest polkadot ``` for you to experience how quick and easy it is to spin-up your own blockchain in your local environment, i.e. right at your laptop.
+  1. Move over Docker, let's jump to Kuberenetes! Now first, develop the Deployment Manifest for the Polkadot image. The manifest specs, saved as [deployment.yaml](./blockchain/deployment.yaml). Notice that our image uses a pre-baked Polkadot image built by Parity Tech. As of this writing, the latest image is paritytech/ci-linux:9a44d4ec-20210423 which is based on substrate v3.x can be referenced in the [dockerhub](https://hub.docker.com/) -- a public container image registry. A private registry could also be provisioned if the situation dictates. There are other alternative image registries as well. For now, dockerhub will suffice.
 
 ```yaml  
 apiVersion: apps/v1
@@ -60,6 +61,7 @@ spec:
   2. Deploy the deployment manifest to kubernetes by calling the below oc or kubectl CLI commands. But prior, call the security-context-constraint system to bypass the RBAC mechanism of kubernetes and openshift. This is a one-time call, to go around the major security obstacle that many inexperienced openshift operator will experience. Once this is overcomed, all else will be as per openshift documentation, easy. Call the oc apply to execute the above pvc and deployment manifest. Get pods to verify the status is "Running". To see the logs, invoke oc logs for either the pod or the deployment. Specifying the pod however requires the entire pod signature, but to specify the deployment, simply know the deployment name, and call it like below. 
 
 ```bash
+oc project polkadot
 #oc adm policy add-scc-to-group anyuid system:authenticated
 oc apply -f blockchain/pvc.yaml
 oc apply -f blockchain/deployment.yaml

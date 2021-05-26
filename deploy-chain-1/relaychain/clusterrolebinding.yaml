@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: polkadot_role_binding
+subjects:
+- kind: ServiceAccount
+  name: polkadot
+  namespace: polkadot
+roleRef:
+  kind: ClusterRole
+  name: polkadot
+  apiGroup: rbac.authorization.k8s.io

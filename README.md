@@ -15,7 +15,7 @@
 
   1. [Phase 1](./deploy-chain-1/README.md): Deploy2K8 Test Polkadot Relay Chain + (Validators x n + Parachain + Collators x m) x l + CICD
   2. [Phase 2](./deploy-chain-2/README.md): Deploy2K8 Test (Custom Chain x n) + UI + CICD, via Substrate
-  3. [Phase 3](./deploy-tools-0/README.md): Monitoring Tools
+  3. [Phase 3](./deploy-tools-0/README.md): Deploy2K8 Monitoring Tools
   4. [Phase 4](./deploy-chain-3/README.md): Deploy2K8 Secure Validators + CICD, Deploy2K8 Secure Collators  + CICD, Deploy2K8 Secure Parachain + CICD, Deploy2K8 Secure Fisherman + CICD
   5. [Phase 5](./deploy-chain-4/README.md): Deploy2K8 Generic Test (Custom Chain(with own tokenomics) x n) + UI + CICD
   6. [Phase 6](./deploy-chain-5/README.md): Deploy2K8 Smart Contract Chain  + CICD  
@@ -31,11 +31,11 @@
   4. [K8 vs Docker by IBM](https://www.ibm.com/cloud/blog/kubernetes-vs-docker)
   5. [K8 vs Docker by Microsoft](https://azure.microsoft.com/en-us/topic/kubernetes-vs-docker/)
 
-  However, few of the most compelling DevOps arguments namely networking, security, automated scheduling, scaling and high-availability in production environments are the key features that Docker can never achieve on its own, not even with Docker Swarm -- until Docker, Inc themselves have raised the white flag, and recognized the supremacy that Kubernetes can provide so they have to adapt. Try running docker images each time in a cluster and configure all these each time like snowflakes, it easily crumbles and is quite a painful and stressful process. Multiply these challenges when you try to deploy hundreds to thousands of these in multiple clouds. 
+  However, few of the most compelling DevOps arguments namely networking, security, automated scheduling, scaling and high-availability in production environments are the key features that Docker can never achieve on its own, not even with Docker Swarm -- until Docker, Inc themselves have raised the [white flag](https://www.linkedin.com/pulse/part-ii-why-docker-openshift-4-rhel-8-scott-mccarty/), and recognized the supremacy that Kubernetes can provide, so they have to adapt. Try running docker images each time in a cluster and configure all these each time, like snowflakes, it easily crumbles and is quite a painful and a stressful process to remediate or fix. Multiply these challenges when you try to deploy hundreds to thousands of these in multiple clouds, and an ocean of differences will be more evident. 
   
-  Remember, the DevOps culture aims to address the "joy" of being in either of the role as Dev or Ops or vice versa, i.e. to function dually effectively and reliably. By far, only Kubernetes have nearly been able to achieve the DevOps ideals, i.e. of enabling a platform for automated integration and deployment, at scale, securely and as much of the many architectural ilities. Although, we also acknowledge the fact that it is really hard to learn it at first. 
+  Remember, the DevOps culture aims to address the "joy" of being in either of the role as Developer and consequently do Operations or vice versa (as SRE), i.e. to function dually effectively and reliably. By far, only Kubernetes have nearly been able to achieve the DevOps/SRE ideals, i.e. of enabling a platform for automated integration and deployment, at scale, securely and covering as much of the many architectural ilities concerns. Albeit the benefits, we also acknowledge the fact that it is really hard to learn at first. 
 
-  Why Openshift? Well, like Linux, Kubernetes is likened to a kernel, it needs a distribution with a specific set of tools, and by far, Redhat's Kubernetes tooling is the most superior among the many that are out there. Take the case of CRC (Code Reader Containers), a desktop app that allows us to quickly use Openshift flavored Kubernetes in our laptops. Furthermore compelling are the following explainers:
+  Why [Openshift](https://www.openshift.com/blog/whats-inside-openshift-4)? Well, like Linux, Kubernetes is likened to a kernel, it needs a distribution with a specific set of tools, and by far, Redhat's Kubernetes tooling is the most superior among the many that are out there. Take the case of CRC (Code Reader Containers), a desktop app that allows us to quickly use Openshift flavored Kubernetes in our laptops, i.e. for those with well-endowed resources. Furthermore, compelling are the following explainers:
 
   1. [Kubernetes-vs-openshift-article](https://www.simplilearn.com/kubernetes-vs-openshift-article)
 
