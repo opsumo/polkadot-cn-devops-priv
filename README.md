@@ -3,27 +3,19 @@
 ## Objective 
   In a [Polkadot](https://polkadot.network) hackaton dubbed as Buildathon: India, my [Opsumo](www.opsumo.co) team aims to take part in the category of "Blockchain Using Substrate, Open Hack ( Dev Tooling / Block Explorer / Block Visualiser etc.)" 
 
-  At its simplest but profoundly elegant, we intend to demonstration a [CNCF](cncf.io) compliant DevOps culture.  We have  resolved to provide a way to automatically spin-up test infrastructures for hosting Polkadot blockchains, components, networks and tools into hybrid/multiple clouds. In order to attain CNCF compliance we believe that the best cloud-native platform that can host the target objectives is to use [Kubernetes](https://kubernetes.io). We however further argue (highly opinionated in some quarters), that in order to achieve a uniformly written script, we have leverage the most mature Kubernetes platform provider in the market, Redhat Openshift. As secondary objective, we also intend to implement a demonstration of automated deployment pipelines that can effectively trigger Continuous Integration and Continuous Deployment (CICD) of a desired Blockchain configuration. And in addition, we also have to provide, on a per need or on-demand basis, a way to provision and deploy a corresponding set of monitoring tools. CICD is the heart of DevOps, and fully realizing its implementation and gain from its benefits is the quintiessential ideals of the culture. 
+  At its simplest but profoundly elegant way, we intend to demonstrate a [CNCF](cncf.io) compliant DevOps culture solution.  We have resolved to provide a way to automatically spin-up test infrastructures for hosting Polkadot blockchains, components, networks and tools into hybrid/multiple clouds. In order to attain CNCF compliance we believe that the best cloud-native platform that can host the target objectives is to use [Kubernetes](https://kubernetes.io). We however further argue (highly opinionated in some quarters), that in order to achieve a uniformly written automation script, we have to leverage the most mature Kubernetes platform provider in the market, i.e [Redhat Openshift](openshift.com). As secondary objective, we also intend to implement a demo of an automated deployment pipelines that can effectively trigger Continuous Integration and Continuous Deployment (CICD) of a desired Blockchain configuration. And in addition, we also have to provide, on a per need or on-demand basis, a way to provision and deploy a corresponding set of monitoring tools. CICD is the heart of DevOps, and fully realizing its implementation and gain from its benefits is the quintiessential ideals of the culture. 
   
   Autotmated DevOps Tooling is what we aim to accomplish in this Buildathon: India 2021.
 
-  ### Implementing Phase 0: Deploy2K8 Test Relay Chain + UI + CICD
-
-  Upon introspection from the initial attempt to successfully execute [Phase 0](./deploy-chain-0/README.md), to do a quick and dirty semi-automatic stateless deployment of a ParityTech released Polkadot Image with a UI viewer, we have arrived to a conclusion that the following Phases and targets could also be achieved, even though not necessarily within the Buildathon timeline.
-
-  The following other important Phases (can be interchanged also as a Priority) are also soft-targeted for implementation during the Buildathon:
-
-  1. [Phase 1](./deploy-chain-1/README.md): Deploy2K8 Test Polkadot Relay Chain + (Validators x n + Parachain + Collators x m) x l + CICD
-  2. [Phase 2](./deploy-chain-2/README.md): Deploy2K8 Test (Custom Chain x n) + UI + CICD, via Substrate
-  3. [Phase 3](./deploy-tools-0/README.md): Deploy2K8 Monitoring Tools
-  4. [Phase 4](./deploy-chain-3/README.md): Deploy2K8 Secure Validators + CICD, Deploy2K8 Secure Collators  + CICD, Deploy2K8 Secure Parachain + CICD, Deploy2K8 Secure Fisherman + CICD
-  5. [Phase 5](./deploy-chain-4/README.md): Deploy2K8 Generic Test (Custom Chain(with own tokenomics) x n) + UI + CICD
-  6. [Phase 6](./deploy-chain-5/README.md): Deploy2K8 Smart Contract Chain  + CICD  
-
-  A couple or several of the Phases enumerated above can be implemented in parallel. E.g., P1 and P2 can be targetted for implementation during the Buildathon from April 29 to May 30. While the other phases could be implemented at other timelines, ParityTech and W3 permitting.
-
 ## Rationale
-  Docker is the status quo, and it works! Why introduce Kubernetes, even more so, Redhat Openshift?! For so many reasons we don't have to repeat saying, like the explanations from the following articles:
+
+  First off, is the why? Why it is essential?
+
+  1. We recognize that for a would layer-1 or 2 app like development like Parachains, Parathread, Bridge, Validator, Collator, Smart Contracts, NFT, DeFi, etc starting from scratch is hard. So what if, there exist a pre-baked set of initial Infra as Code provisioner, Cluster, Network and Security setup that a would-be team could leverage and use to scaffold their own use-cases as a foundational building block? Imagine the win-win benefit it could give for the Polkadot Network community. Speed of development will certain attain greater velocities, and with it, a more lively and active community. For the team, again, it is speed to market. 
+
+  2. Like in the first, what if for the substrate-node-template to be readily provisioned in an infra and all the she-bangs needed to speed-up development of other custom blockchain that will address a use case, such as DeFi, smart-contract or another cryto-tech.
+
+  Secondly is the wnat? While Docker it seems still is the status quo, we can see that it simply works, no debate in that! But why do have to introduce Kubernetes, and even more so, Redhat Openshift?! For so many reasons we don't have to repeat saying, like the explanations from the following articles:
 
   1. [K8 vs Docker primer](https://containerjournal.com/topics/container-ecosystems/kubernetes-vs-docker-a-primer/)
   2. [K8 vs Docker by SumoLogic](https://www.sumologic.com/blog/kubernetes-vs-docker/)
@@ -44,3 +36,20 @@
   3. [7 most critical differences between Openshift and Kubernetes](https://www.dataversity.net/openshift-vs-kubernetes-the-seven-most-critical-differences/)
 
   4. [BMC pov on  Kubernetes and Openshift](https://www.bmc.com/blogs/kubernetes-vs-openshift/)
+
+  How? 
+
+  ### Implementing Phase 0: Deploy2K8 Test Relay Chain + UI + CICD
+
+  Upon introspection from the initial attempt to successfully execute [Phase 0](./deploy-chain-0/README.md), to do a quick and dirty semi-automatic stateless deployment of a ParityTech released Polkadot Image with a UI viewer, we have arrived to a conclusion that the following Phases and targets could also be achieved, even though not necessarily within the Buildathon timeline.
+
+  The following other important Phases (can be interchanged also as a Priority) are also soft-targeted for implementation during the Buildathon:
+
+  1. [Phase 1](./deploy-chain-1/README.md): Deploy2K8 Test Polkadot Relay Chain + (Validators x n + Parachain + Collators x m) x l + CICD
+  2. [Phase 2](./deploy-chain-2/README.md): Deploy2K8 Test (Custom Chain x n) + UI + CICD, via Substrate
+  3. [Phase 3](./deploy-tools-0/README.md): Deploy2K8 Monitoring Tools
+  4. [Phase 4](./deploy-chain-3/README.md): Deploy2K8 Secure Validators + CICD, Deploy2K8 Secure Collators  + CICD, Deploy2K8 Secure Parachain + CICD, Deploy2K8 Secure Fisherman + CICD
+  5. [Phase 5](./deploy-chain-4/README.md): Deploy2K8 Generic Test (Custom Chain(with own tokenomics) x n) + UI + CICD
+  6. [Phase 6](./deploy-chain-5/README.md): Deploy2K8 Smart Contract Chain  + CICD  
+
+  A couple or several of the Phases enumerated above can be implemented in parallel. E.g., P1 and P2 can be targetted for implementation during the Buildathon from April 29 to May 30. While the other phases could be implemented at other timelines, ParityTech and W3 permitting.

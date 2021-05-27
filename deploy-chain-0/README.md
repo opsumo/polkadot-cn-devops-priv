@@ -12,7 +12,7 @@ The intent here is to showcase that a Polkadot Image, in this case, the containe
   2. A Kubernetes platform. Local or on-prem Datacenter or on-cloud VPC
     Machine Specifications: 
       * 4-8 Core, 16-64GbRAM, with large free storage space
-      * Minikube but preferably Code Ready Container with Openshift 4.x or OKD 4.x or Openshift 4.x
+      * Minikube but preferably [Code Ready Container with Openshift 4.x or OKD 4.x or Openshift 4.x](https://developers.redhat.com/products/codeready-containers/overview)
       * Able to login to a Kubernetes platform via Kubectl or oc CLI.
 
           <img align="center" width="500" height="600" src="./images/rhos-crc-login.png"> 
@@ -49,20 +49,24 @@ spec:
           name: wss
         - containerPort: 9933
         - containerPort: 30333
-        volumes:
-        - name: polkadot
-        mountPath: /polkadot
-    volumeMounts:
-      name: polkadot
-      persistentVolumeClaim:
-        claimName: polkadot-pvc 
+        volumeMounts:
+        - mountPath: /data
+          name: polkadot
+      volumes:
+      - name: polkadot
+        persistentVolumeClaim:
+          claimName: polkadot-pvc
+      securityContext:
+        runAsUser: 0 
 ```
   
-  2. Deploy the deployment manifest to kubernetes by calling the below oc or kubectl CLI commands. But prior, call the security-context-constraint system to bypass the RBAC mechanism of kubernetes and openshift. This is a one-time call, to go around the major security obstacle that many inexperienced openshift operator will experience. Once this is overcomed, all else will be as per openshift documentation, easy. Call the oc apply to execute the above pvc and deployment manifest. Get pods to verify the status is "Running". To see the logs, invoke oc logs for either the pod or the deployment. Specifying the pod however requires the entire pod signature, but to specify the deployment, simply know the deployment name, and call it like below. 
+  2. Deploy the deployment manifest to kubernetes by calling the below oc or kubectl CLI commands. But prior, call the security-context-constraint system to bypass the RBAC mechanism of kubernetes and openshift to allow the pod to run as root. This is a one-time call, to go around the major security obstacle that many inexperienced openshift operator will experience. Once this is overcomed, all else will be as per openshift documentation, easy. Call the oc apply to execute the above pvc and deployment manifest. Get pods to verify the status is "Running". To see the logs, invoke oc logs for either the pod or the deployment. Specifying the pod however requires the entire pod signature, but to specify the deployment, simply know the deployment name, and call it like below. 
 
 ```bash
 oc project polkadot
-#oc adm policy add-scc-to-group anyuid system:authenticated
+oc adm policy add-scc-to-group anyuid system:authenticated
+oc adm policy add-scc-to-user privileged -z default
+oc adm policy add-scc-to-user anyuid -z default
 oc apply -f blockchain/pvc.yaml
 oc apply -f blockchain/deployment.yaml
 oc get pods
@@ -129,3 +133,8 @@ docker push edmcbee/polkadotjs:latest
   6. Correspondingly, the frontend has its own [deployment](./frontend-ui/deployment-fe.yaml), [service](./frontend-ui/service-fe.yaml) and [route](./frontend-ui/route-fe.yaml) manifest. Deploy these by calling oc apply on each respectively. If successful, we should then be able to see a UI rendered through the route specifief in route-fe.yaml.
 
       <img align="center" width="550" height="500" src="./images/rhos-crc-polkajs.png">  
+
+## Challenges
+Building Polkadot and Substrate core backend binaries into a Docker Image has been so far very challenging. For substrate, we had a successful image build eventually by ensuring a full and pure linux (Ubuntu) VM stage during the cargo build. Then copy the node-template binary to an image of the latest Ubunto version (v21.04). 
+
+Polkadot core was most challenging because the binary can't be copied in a straightforward manner, whether via 1 or 2 stage builds.
