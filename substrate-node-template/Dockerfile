@@ -1,36 +1,25 @@
-FROM paritytech/ci-linux:production as builder
-LABEL description="This is the build stage for Polkadot. Here we create the binary."
-
-ARG PROFILE=release
-WORKDIR /sustrate
-
-COPY . /substrate 
-#RUN git clone -b v3.0.0 --depth 1 https://github.com/substrate-developer-hub/substrate-node-template && \
-#    cd substrate-node-template && 
-RUN pwd && cd /substrate && cargo build --$PROFILE
-# ===== SECOND STAGE ======
-
-FROM ubuntu:18.04
+FROM ubuntu
 #FROM debian:buster-slim
-LABEL description="Substrate"
-ARG PROFILE=release
-#ADD ./target/$PROFILE/node-template /usr/local/bin
-COPY --from=builder /substrate/target/$PROFILE/node-template /usr/local/bin
+#COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
-RUN useradd -m -u 1000 -U -s /bin/sh -d /substrate substrate && \
-	mkdir -p /substrate/.local/share && \
-	mkdir /data && \
-	chown -R substrate:substrate /data && \
-	ln -s /data /substrate/.local/share/substrate && \
-	rm -rf /usr/bin /usr/sbin
+#ENV PATH=/\
+#    SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt\
+#    SSL_CERT_DIR=/etc/ssl/certs\
+#    GITHUB_SHA=$GITHUB_SHA\
+#    RUST_BACKTRACE=full\
+#    RUST_LOG="warn,subtrate=info"
 
-#  chgrp -R 0 /substrate/.local/share && \
-#  chmod -R g=u /substrate/.local/share &&\
-  
+ADD ./target/release/node-template /
+
+RUN useradd -m -u 1001 -U -s /bin/sh -d /substrate substrate &&\
+	mkdir -p /substrate/.local/share && mkdir /data &&\
+	chown -R substrate:0 /data && chown -R substrate:0 ./node-template &&\
+	ln -s /data /substrate/.local/share/substrate &&\
+  	chgrp -R 0 /substrate/.local/share && chmod -R g=u /substrate/.local/share &&\
+	apt update && apt -y install r-base r-base-core r-recommended
+
 USER substrate
 EXPOSE 30333 9933 9944
 VOLUME ["/data"]
 
-#CMD ["ls", "-al", "/usr/local/bin"]
-ENTRYPOINT ["/usr/local/bin/node-template"]
-CMD ["--dev"]
+ENTRYPOINT ["./node-template", "--dev", "--ws-external"]
