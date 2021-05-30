@@ -96,5 +96,5 @@ jobs:
       uses: redhat-developer/openshift-actions@v1.1
       with:
         cmd: |
-          'oc --token=${{ env.OPENSHIFT_TOKEN }} rollout latest dc/polkadot -n polkadot'
+          'oc --token=${{ env.OPENSHIFT_TOKEN }} --server=${{ env.OPENSHIFT_SERVER }} rollout latest dc/polkadot -n polkadot'
 
