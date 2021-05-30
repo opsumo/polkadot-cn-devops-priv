@@ -79,7 +79,7 @@ jobs:
 
     steps:
     - run: |
-        sudo apt-get install fuse-overlayfs
+        sudo apt-get update && apt-get -y install libfuse3-dev
         mkdir -vp ~/.config/containers
         printf "[storage.options]\nmount_program=\"/usr/bin/fuse-overlayfs\"" > ~/.config/containers/storage.conf
 
