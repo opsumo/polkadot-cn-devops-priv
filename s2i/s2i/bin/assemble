@@ -1,0 +1,47 @@
+#!/bin/bash -e
+#
+# S2I assemble script for the 's2i-rust' image.
+# The 'assemble' script builds your application source so that it is ready to run.
+#
+# For more information refer to the documentation:
+#	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
+
+# If the 's2i-rust' assemble script is executed with the '-h' flag, print the usage.
+if [[ "$1" == "-h" ]]; then
+	exec /usr/libexec/s2i/usage
+fi
+
+# Restore dependency download cache from the previous build (if it exists).
+if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
+  echo "---> Restoring Cargo cache..."
+  mv -n /tmp/artifacts/cargo/* $CARGO_HOME
+fi
+
+echo "---> Installing application source..."
+mv -f /tmp/src/* $HOME
+
+# Restore incremental build artifacts from the previous build (if they exist).
+if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
+  echo "---> Restoring incremental build state..."
+  mv -f /tmp/artifacts/target .
+fi
+
+echo "---> Building application from source..."
+echo "HOME=$HOME"
+pwd
+ls -lt
+cd $HOME
+ls -lt
+#if [ -f ./scripts/init.sh ]
+#then
+#  ./scripts/init.sh
+#fi
+rustup install stable
+rustup default stable
+cargo build --release --locked
+# --release --locked
+
+# Fix source directory permissions
+echo "---> Fixing exec permissions..."
+fix-permissions ./target/release
