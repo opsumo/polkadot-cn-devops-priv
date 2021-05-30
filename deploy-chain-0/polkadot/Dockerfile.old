@@ -1,0 +1,17 @@
+#FROM debian:buster-slim
+FROM ubuntu:21.04
+WORKDIR /home
+COPY ./target/release/polkadot .
+#ARG DEBIAN_FRONTEND=noninteractive
+RUN useradd -m -u 1001 -U -s /bin/sh -d /polkadot polkadot &&\
+	mkdir -p /polkadot/.local/share && mkdir /data &&\
+	chown -R polkadot:0 /data && \
+	ln -s /data /polkadot/.local/share &&\
+  	chgrp -R 0 /polkadot/.local/share && chmod -R g=u /polkadot/.local/share 
+#	apt update && apt-get --assume-yes install r-base 
+RUN ./polkadot --version
+USER substrate
+EXPOSE 30333 9933 9944
+VOLUME ["/data"]
+
+CMD ["./polkadot", "--dev", "--ws-external"]
