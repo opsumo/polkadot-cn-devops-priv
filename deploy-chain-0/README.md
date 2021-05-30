@@ -135,6 +135,6 @@ docker push edmcbee/polkadotjs:latest
       <img align="center" width="550" height="500" src="./images/rhos-crc-polkajs.png">  
 
 ## Challenges
-Building Polkadot and Substrate core backend binaries into a Docker Image has been so far very challenging. For substrate, we had a successful image build eventually by ensuring a full and pure linux (Ubuntu) VM stage during the cargo build. Then copy the node-template binary to an image of the latest Ubunto version (v21.04). 
-
-Polkadot core was most challenging because the binary can't be copied in a straightforward manner, whether via 1 or 2 stage builds.
+* Building Polkadot and Substrate core backend binaries into a Docker Image was challenging until we realized that a build will simply require more memory. 
+* Implementing the CICD is a challenge especially on having Github Actions run a cross network deployment to our local cluster.
+* Listening to Prometheus Metrics
