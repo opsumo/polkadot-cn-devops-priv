@@ -5,7 +5,7 @@ ARG PROFILE=release
 WORKDIR /polkadot
 
 COPY ./deploy-chain-0/polkadot/ .
-RUN ls -al .
+#RUN ls -al .
 RUN cargo build --$PROFILE
 
 # ===== SECOND STAGE ======
