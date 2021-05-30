@@ -133,7 +133,6 @@ jobs:
         file: deploy-chain-0/polkadot/scripts/docker/release.Dockerfile
         tags: |
           edmcbee/polkadot:latest
-          edmcbee/polkadot:${{ github.event.release.tag_name }}
         build-args: |
           POLKADOT_VERSION=${{ github.event.release.tag_name }}
           VCS_REF=${{ github.ref }}
