@@ -193,13 +193,10 @@ jobs:
         namespace: ${{ env.OPENSHIFT_NAMESPACE }}
 
     - name: Create New Project
-      uses: redhat-developer/openshift-action
+      id: new-project-namespace  
+      uses: redhat-actions/oc-new-project@v1
       with:
-        version: '3.11.90'
-        openshift_server_url: ${{ secrets.OPENSHIFT_SERVER_URL }}
-        parameters: '{"apitoken": "${{ secrets.API_TOKEN }}", "acceptUntrustedCerts": "true"}'
-        cmd: |
-          'new-project ${{ env.OPENSHIFT_NAMESPACE }} || project ${{ env.OPENSHIFT_NAMESPACE }}'    
+        namespace: ${{ env.OPENSHIFT_NAMESPACE }}
 
     # This step should create a deployment, service, and route to run your app and expose it to the internet.
     # https://github.com/redhat-actions/oc-new-app#readme
