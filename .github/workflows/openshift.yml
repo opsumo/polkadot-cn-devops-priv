@@ -48,7 +48,7 @@ env:
   # See https://github.com/redhat-actions/oc-login#readme for how to retrieve these values.
   #OPENSHIFT_SERVER: ${{ secrets.RHOCP_DEV_CLUSTER }}
   #OPENSHIFT_TOKEN: ${{ secrets.RHOCP_DEV_TOKEN }}
-  OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
+  OPENSHIFT_SERVER: https://ocp.ellipticurve.com:8443
   OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
   #oc login https://ocp.ellipticurve.com:8443 --token=A5--Rkmwua5o6pIfc2Gjx8Cg3GL2vkGwihgOoMWbadk
 
