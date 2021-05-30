@@ -80,7 +80,7 @@ jobs:
         SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }}
 
     steps:
-    ######DOCKER BUILD      
+    ######DOCKER BUILD
       - name: Github checkout
         uses: actions/checkout@v2
       - name: Set up QEMU
@@ -115,7 +115,8 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-      ######DOCKER BUILD
+      
+    ######DOCKER BUILD
 
       ######CICD to OCP
       - name: Install oc
@@ -138,4 +139,8 @@ jobs:
         id: new-project-namespace  
         run: oc --token=${{ env.OPENSHIFT_TOKEN }} --server=${{ env.OPENSHIFT_SERVER }} rollout latest dc/polkadot -n polkadot
       ######CICD to OCP  
+
+
+
+
 
