@@ -123,6 +123,10 @@ jobs:
         openshift_token: ${{ env.OPENSHIFT_TOKEN }}
         insecure_skip_tls_verify: true
         namespace: ${{ env.OPENSHIFT_NAMESPACE }}
+    - name: Do print Openshift URL
+      with:
+        cmd: |
+          'echo ${{ env.OPENSHIFT_SERVER }}'
 
     - name: Deploy to Project
       id: new-project-namespace  
