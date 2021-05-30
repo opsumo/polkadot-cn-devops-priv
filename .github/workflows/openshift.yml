@@ -78,6 +78,11 @@ jobs:
         SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }}
 
     steps:
+    - run: |
+        sudo apt-get install fuse-overlayfs
+        mkdir -vp ~/.config/containers
+        printf "[storage.options]\nmount_program=\"/usr/bin/fuse-overlayfs\"" > ~/.config/containers/storage.conf
+
     - name: Check if secrets exists
       uses: actions/github-script@v3
       with:
@@ -171,7 +176,7 @@ jobs:
     #    # https://github.com/redhat-actions/buildah-build#scratch-build-inputs
     #    # Otherwise, point this to your Dockerfile relative to the repository root.
         dockerfiles: |
-           ./deploy-chain-0/polkadot/docker/Dockerfile 
+           deploy-chain-0/polkadot/docker/Dockerfile 
     #      ./Dockerfile
     ## https://github.com/redhat-actions/push-to-registry#readme
     - name: Push to registry
