@@ -130,7 +130,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        file: scripts/docker/release.Dockerfile
+        file: deploy-chain-0/polkadot/scripts/docker/release.Dockerfile
         tags: |
           edmcbee/polkadot:latest
           edmcbee/polkadot:${{ github.event.release.tag_name }}
