@@ -134,6 +134,8 @@ docker push edmcbee/polkadotjs:latest
 
       <img align="center" width="550" height="500" src="./images/rhos-crc-polkajs.png">  
 
+  7.    
+
 ## Challenges
 * Building Polkadot and Substrate core backend binaries into a Docker Image was challenging until we realized that a build will simply require more memory. 
 * Implementing the CICD is a challenge especially on having Github Actions run a cross network deployment to our local cluster.
