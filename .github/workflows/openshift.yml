@@ -80,6 +80,11 @@ jobs:
         SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }}
 
     steps:
+    - name: Install oc
+      uses: redhat-actions/oc-installer@v1
+      with:
+        oc_version: '4.6'
+        
     - name: Log in to OpenShift
       uses: redhat-actions/oc-login@v1
       with:
@@ -93,8 +98,5 @@ jobs:
 
     - name: Deploy to Project
       id: new-project-namespace  
-      uses: redhat-developer/openshift-actions@v1.1
-      with:
-        cmd: |
-          'oc --token=${{ env.OPENSHIFT_TOKEN }} --server=${{ env.OPENSHIFT_SERVER }} rollout latest dc/polkadot -n polkadot'
+      run: oc --token=${{ env.OPENSHIFT_TOKEN }} --server=${{ env.OPENSHIFT_SERVER }} rollout latest dc/polkadot -n polkadot
 
