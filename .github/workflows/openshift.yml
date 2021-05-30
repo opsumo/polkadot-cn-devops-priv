@@ -110,6 +110,8 @@ jobs:
           }
     - name: checkout this repo/develop branch     
       uses: actions/checkout@v2
+      with:
+        path: develop
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
     - name: Cache Docker layers
