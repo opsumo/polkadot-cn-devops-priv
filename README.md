@@ -1,7 +1,11 @@
-# polkadot-cn-devops
+# polkadot-cn-devops-CICD
 
-## Objective 
+## Description
   In a [Polkadot](https://polkadot.network) hackaton dubbed as Buildathon: India, my [Opsumo](www.opsumo.co) team aims to take part in the category of "Blockchain Using Substrate, Open Hack ( Dev Tooling / Block Explorer / Block Visualiser etc.)" 
+
+  A [Cloud Native Computing Foundation](cncf.io) compliant DevOps culture solution.
+
+## Objective   
 
   At its simplest but profoundly elegant way, we intend to demonstrate a [CNCF](cncf.io) compliant DevOps culture solution.  We have resolved to provide a way to automatically spin-up test infrastructures for hosting Polkadot blockchains, components, networks and tools into hybrid/multiple clouds. In order to attain CNCF compliance we believe that the best cloud-native platform that can host the target objectives is to use [Kubernetes](https://kubernetes.io). We however further argue (highly opinionated in some quarters), that in order to achieve a uniformly written automation script, we have to leverage the most mature Kubernetes platform provider in the market, i.e [Redhat Openshift](openshift.com). As secondary objective, we also intend to implement a demo of an automated deployment pipelines that can effectively trigger Continuous Integration and Continuous Deployment (CICD) of a desired Blockchain configuration. And in addition, we also have to provide, on a per need or on-demand basis, a way to provision and deploy a corresponding set of monitoring tools. CICD is the heart of DevOps, and fully realizing its implementation and gain from its benefits is the quintiessential ideals of the culture. 
   
@@ -11,7 +15,7 @@
 
   First off, is the why? Why it is essential?
 
-  1. We recognize that for a would layer-1 or 2 app like development like Parachains, Parathread, Bridge, Validator, Collator, Smart Contracts, NFT, DeFi, etc starting from scratch is hard. So what if, there exist a pre-baked set of initial Infra as Code provisioner, Cluster, Network and Security setup that a would-be team could leverage and use to scaffold their own use-cases as a foundational building block? Imagine the win-win benefit it could give for the Polkadot Network community. Speed of development will certain attain greater velocities, and with it, a more lively and active community. For the team, again, it is speed to market. 
+  1. We recognize that for a would be layer-1 or 2 app development like Parachains, Parathread, Bridge, Validator, Collator, Smart Contracts, NFT, DeFi, etc starting from scratch is hard. So what if, there exist pre-baked set of initial Infra as Code provisioner, Cluster, Network and Security setup that a would-be team could leverage and use to scaffold their own use-cases as a foundational building block? Imagine the win-win benefit it could give for the Polkadot Network community. Speed of development could certain attain greater velocities, and with it, a more lively and active community. For the teams using it, again, the value is speed to market. 
 
   2. Like in the first, what if we offer a service for a substrate-node-template to be readily provisioned in a cloud infra and all the she-bangs needed to speed-up development of other custom blockchain that will address a use case, such as DeFi, smart-contract or another cryto-tech. 
 
@@ -53,3 +57,4 @@
   6. [Phase 6](./deploy-chain-5/README.md): Deploy2K8 Smart Contract Chain  + CICD  
 
   A couple or several of the Phases enumerated above can be implemented in parallel. E.g., P1 and P2 can be targetted for implementation during the Buildathon from April 29 to May 30. While the other phases could be implemented at other timelines, ParityTech and W3 permitting.
+

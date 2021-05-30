@@ -4,8 +4,8 @@ LABEL description="This is the build stage for Polkadot. Here we create the bina
 ARG PROFILE=release
 WORKDIR /polkadot
 
-COPY . /polkadot
-
+COPY ./deploy-chain-0/polkadot/ .
+RUN ls -al .
 RUN cargo build --$PROFILE
 
 # ===== SECOND STAGE ======
@@ -24,7 +24,7 @@ RUN useradd -m -u 1001 -U -s /bin/sh -d /polkadot polkadot && \
 	rm -rf /usr/bin /usr/sbin
 
 USER polkadot
-EXPOSE 30333 9933 9944
+EXPOSE 30333 9933 9944 9615
 VOLUME ["/data"]
 
 CMD ["/usr/local/bin/polkadot"]

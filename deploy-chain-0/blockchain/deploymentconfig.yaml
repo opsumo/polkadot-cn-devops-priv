@@ -1,0 +1,90 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: '2021-05-29T01:43:31Z'
+  generation: 7
+  labels:
+    app: polkadot
+  name: polkadot
+  namespace: polkadot
+  resourceVersion: '290496'
+  selfLink: /apis/apps.openshift.io/v1/namespaces/polkadot/deploymentconfigs/polkadot
+  uid: 463efef9-c01f-11eb-bc60-5254f853f44c
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    app: polkadot
+    deploymentconfig: polkadot
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      annotations:
+        openshift.io/generated-by: OpenShiftNewApp
+      creationTimestamp: null
+      labels:
+        app: polkadot
+        deploymentconfig: polkadot
+    spec:
+      containers:
+        - image: >-
+            edmcbee/polkadot@sha256:b8d5acad35ba7eb0af03afc8f52ccdcbc23ed0580df5f62195e323fb7833f2fa
+          imagePullPolicy: Always
+          name: polkadot
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  test: false
+  triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+          - polkadot
+        from:
+          kind: ImageStreamTag
+          name: 'polkadot:latest'
+          namespace: polkadot
+        lastTriggeredImage: >-
+          edmcbee/polkadot@sha256:b8d5acad35ba7eb0af03afc8f52ccdcbc23ed0580df5f62195e323fb7833f2fa
+      type: ImageChange
+status:
+  availableReplicas: 1
+  conditions:
+    - lastTransitionTime: '2021-05-30T13:31:06Z'
+      lastUpdateTime: '2021-05-30T13:31:06Z'
+      message: Deployment config has minimum availability.
+      status: 'True'
+      type: Available
+    - lastTransitionTime: '2021-05-30T13:32:51Z'
+      lastUpdateTime: '2021-05-30T13:32:57Z'
+      message: replication controller "polkadot-4" successfully rolled out
+      reason: NewReplicationControllerAvailable
+      status: 'True'
+      type: Progressing
+  details:
+    causes:
+      - type: Manual
+    message: manual change
+  latestVersion: 4
+  observedGeneration: 7
+  readyReplicas: 1
+  replicas: 1
+  unavailableReplicas: 0
+  updatedReplicas: 1
