@@ -1,7 +1,11 @@
-# polkadot-cn-devops
+# polkadot-cn-devops-CICD
 
-## Objective 
+## Description
   In a [Polkadot](https://polkadot.network) hackaton dubbed as Buildathon: India, my [Opsumo](www.opsumo.co) team aims to take part in the category of "Blockchain Using Substrate, Open Hack ( Dev Tooling / Block Explorer / Block Visualiser etc.)" 
+
+  A [Cloud Native Computing Foundation](cncf.io) compliant DevOps culture solution.
+
+## Objective   
 
   At its simplest but profoundly elegant way, we intend to demonstrate a [CNCF](cncf.io) compliant DevOps culture solution.  We have resolved to provide a way to automatically spin-up test infrastructures for hosting Polkadot blockchains, components, networks and tools into hybrid/multiple clouds. In order to attain CNCF compliance we believe that the best cloud-native platform that can host the target objectives is to use [Kubernetes](https://kubernetes.io). We however further argue (highly opinionated in some quarters), that in order to achieve a uniformly written automation script, we have to leverage the most mature Kubernetes platform provider in the market, i.e [Redhat Openshift](openshift.com). As secondary objective, we also intend to implement a demo of an automated deployment pipelines that can effectively trigger Continuous Integration and Continuous Deployment (CICD) of a desired Blockchain configuration. And in addition, we also have to provide, on a per need or on-demand basis, a way to provision and deploy a corresponding set of monitoring tools. CICD is the heart of DevOps, and fully realizing its implementation and gain from its benefits is the quintiessential ideals of the culture. 
   
