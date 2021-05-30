@@ -11,7 +11,7 @@
 
   First off, is the why? Why it is essential?
 
-  1. We recognize that for a would layer-1 or 2 app like development like Parachains, Parathread, Bridge, Validator, Collator, Smart Contracts, NFT, DeFi, etc starting from scratch is hard. So what if, there exist a pre-baked set of initial Infra as Code provisioner, Cluster, Network and Security setup that a would-be team could leverage and use to scaffold their own use-cases as a foundational building block? Imagine the win-win benefit it could give for the Polkadot Network community. Speed of development will certain attain greater velocities, and with it, a more lively and active community. For the team, again, it is speed to market. 
+  1. We recognize that for a would be layer-1 or 2 app development like Parachains, Parathread, Bridge, Validator, Collator, Smart Contracts, NFT, DeFi, etc starting from scratch is hard. So what if, there exist pre-baked set of initial Infra as Code provisioner, Cluster, Network and Security setup that a would-be team could leverage and use to scaffold their own use-cases as a foundational building block? Imagine the win-win benefit it could give for the Polkadot Network community. Speed of development could certain attain greater velocities, and with it, a more lively and active community. For the teams using it, again, the value is speed to market. 
 
   2. Like in the first, what if we offer a service for a substrate-node-template to be readily provisioned in a cloud infra and all the she-bangs needed to speed-up development of other custom blockchain that will address a use case, such as DeFi, smart-contract or another cryto-tech. 
 
