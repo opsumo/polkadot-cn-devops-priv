@@ -124,9 +124,7 @@ jobs:
         insecure_skip_tls_verify: true
         namespace: ${{ env.OPENSHIFT_NAMESPACE }}
     - name: Do print Openshift URL
-      with:
-        cmd: |
-          'echo ${{ env.OPENSHIFT_SERVER }}'
+      run: echo ${{ env.OPENSHIFT_SERVER }}
 
     - name: Deploy to Project
       id: new-project-namespace  
