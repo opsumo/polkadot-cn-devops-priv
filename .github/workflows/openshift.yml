@@ -80,42 +80,6 @@ jobs:
         SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }}
 
     steps:
-    #- run: |
-    #    sudo apt-get update && sudo apt-get -y install fuse3 libc6 libfuse3-3 fuse-overlayfs
-    #    mkdir -vp ~/.config/containers
-    #    printf "[storage.options]\nmount_program=\"/usr/bin/fuse-overlayfs\"" > ~/.config/containers/storage.conf
-
-    - name: Check if secrets exists
-      uses: actions/github-script@v3
-      with:
-        script: |
-          const secrets = {
-            DOCKER_PASSWORD: `${{ secrets.DOCKERHUB_TOKEN }}`,
-            OPENSHIFT_SERVER: `${{ secrets.OPENSHIFT_SERVER }}`,
-            OPENSHIFT_TOKEN: `${{ secrets.OPENSHIFT_TOKEN }}`,
-          };
-
-          const missingSecrets = Object.entries(secrets).filter(([ name, value ]) => {
-            if (value.length === 0) {
-              core.warning(`Secret "${name}" is not set`);
-              return true;
-            }
-            core.info(`✔️ Secret "${name}" is set`);
-            return false;
-
-          });
-
-          if (missingSecrets.length > 0) {
-            core.setFailed(`❌ At least one required secret is not set in the repository. \n` +
-              "You can add it using:\n" +
-              "GitHub UI: https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository \n" +
-              "GitHub CLI: https://cli.github.com/manual/gh_secret_set \n" +
-              "Also, refer to https://github.com/redhat-actions/oc-login#getting-started-with-the-action-or-see-example");
-          }
-          else {
-            core.info(`✅ All the required secrets are set`);
-          }
-
     - name: Log in to OpenShift
       uses: redhat-actions/oc-login@v1
       with:
@@ -123,6 +87,7 @@ jobs:
         openshift_token: ${{ env.OPENSHIFT_TOKEN }}
         insecure_skip_tls_verify: true
         namespace: ${{ env.OPENSHIFT_NAMESPACE }}
+        
     - name: Do print Openshift URL
       run: echo ${{ env.OPENSHIFT_SERVER }}
 
