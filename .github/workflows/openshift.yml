@@ -78,10 +78,10 @@ jobs:
         SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }}
 
     steps:
-    - run: |
-        sudo apt-get update && sudo apt-get -y install fuse3 libc6 libfuse3-3 fuse-overlayfs
-        mkdir -vp ~/.config/containers
-        printf "[storage.options]\nmount_program=\"/usr/bin/fuse-overlayfs\"" > ~/.config/containers/storage.conf
+    #- run: |
+    #    sudo apt-get update && sudo apt-get -y install fuse3 libc6 libfuse3-3 fuse-overlayfs
+    #    mkdir -vp ~/.config/containers
+    #    printf "[storage.options]\nmount_program=\"/usr/bin/fuse-overlayfs\"" > ~/.config/containers/storage.conf
 
     - name: Check if secrets exists
       uses: actions/github-script@v3
