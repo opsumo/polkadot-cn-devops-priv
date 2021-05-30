@@ -83,7 +83,7 @@ jobs:
       with:
         script: |
           const secrets = {
-            REGISTRY_PASSWORD: `${{ secrets.REGISTRY_PASSWORD }}`,
+            DOCKER_PASSWORD: `${{ secrets.DOCKERHUB_TOKEN }}`,
             OPENSHIFT_SERVER: `${{ secrets.OPENSHIFT_SERVER }}`,
             OPENSHIFT_TOKEN: `${{ secrets.OPENSHIFT_TOKEN }}`,
           };
