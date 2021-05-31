@@ -130,11 +130,15 @@ docker tag edmcbee/polkadotjs:latest
 docker push edmcbee/polkadotjs:latest
 ```
 
-  6. Correspondingly, the frontend has its own [deployment](./frontend-ui/deployment-fe.yaml), [service](./frontend-ui/service-fe.yaml) and [route](./frontend-ui/route-fe.yaml) manifest. Deploy these by calling oc apply on each respectively. If successful, we should then be able to see a UI rendered through the route specifief in route-fe.yaml.
+  6. Correspondingly, the frontend has its own [deployment](./frontend-ui/deployment-fe.yaml), [service](./frontend-ui/service-fe.yaml) and [route](./frontend-ui/route-fe.yaml) manifest. Deploy these by calling oc apply on each respectively. If successful, we should then be able to see a UI rendered through the route specifief in route-fe.yaml. [Here's how it looks like in my laptop](https://youtu.be/ZMcWsJhDcgQ).
 
       <img align="center" width="550" height="500" src="./images/rhos-crc-polkajs.png">  
 
-  7.    
+  7. CICD.
+    + Setup the DeploymentConfig ```oc apply -f deploymentconfig.yaml```
+    + Build a container
+    + Setup the Dockerhub
+    + Setup the Github Actions   
 
 ## Challenges
 * Building Polkadot and Substrate core backend binaries into a Docker Image was challenging until we realized that a build will simply require more memory. 
