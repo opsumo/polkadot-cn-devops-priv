@@ -59,7 +59,7 @@
   A couple or several of the Phases enumerated above can be implemented in parallel. E.g., P1 and P2 can be targetted for implementation during the Buildathon from April 29 to May 30. While the other phases could be implemented at other timelines, ParityTech and W3 permitting.
 
   ## To make P0 work
-  Setup the github secrets, do the clone and checkout like below, update the ./.github/workflows/openshift.yml, then git push
+  Setup the github secrets, do the clone and checkout like below, update the ./.github/workflows/openshift.yml, then git push in develop branch
 
   ```bash
   git clone https://github.com/opsumo/polkadot-cn-devops-priv.git
